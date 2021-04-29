@@ -46,7 +46,7 @@ public class HigherOrderFunctionsLearningTest {
     @Test
     public void testMap() {
         Stream<Integer> input = Stream.of(1, 2, 3);
-        List<Integer> actual = null; // TODO: Replace the `actual` with your solution, here and in all the following.
+        List<Integer> actual = input.map(i -> i+1).collect(Collectors.toList()); // TODO: Replace the `actual` with your solution, here and in all the following.
         List<Integer> expected = List.of(2, 3, 4);
         Assertions.assertIterableEquals(expected, actual);
     }
