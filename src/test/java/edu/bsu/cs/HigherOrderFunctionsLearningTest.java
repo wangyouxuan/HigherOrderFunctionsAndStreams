@@ -80,7 +80,7 @@ public class HigherOrderFunctionsLearningTest {
     @Test
     public void testConcatEven() {
         Stream<String> input = Stream.of("a1", "a2", "a3", "b1", "b2", "b3");
-        String actual = null;
+        String actual = input.filter(n -> n.charAt(1)%2 == 0).reduce("",(i,n) -> i+n);
         String expected = "a2b2";
         Assertions.assertEquals(expected, actual);
     }
@@ -92,7 +92,7 @@ public class HigherOrderFunctionsLearningTest {
     public void testCountByDate() {
         Instant instant = Instant.parse("2021-03-01T00:00:00.00Z");
         Stream<Revision> input = getRevisions("soup04.json");
-        long actual = 0;
+        long actual = input.filter(i -> instant.isBefore(i)).count();
         int expected = 3;
         Assertions.assertEquals(expected, actual);
     }
@@ -127,7 +127,7 @@ public class HigherOrderFunctionsLearningTest {
     public void testCountWhitelisted() {
         List<String> whitelist = List.of("Sleepy Beauty", "Spencer", "QueasyQ");
         Stream<Revision> input = getRevisions("soup30.json");
-        long actual = 0;
+        long actual = input.getClass().getResourceAsStream(whitelist
         int expected = 3;
         Assertions.assertEquals(expected, actual);
     }
