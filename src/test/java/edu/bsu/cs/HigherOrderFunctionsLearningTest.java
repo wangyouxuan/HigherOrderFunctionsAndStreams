@@ -178,8 +178,7 @@ public class HigherOrderFunctionsLearningTest {
                 .collect(Collectors.toList()).stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream().reduce((s1, s2) -> s1.getValue() >= s2.getValue() ? s1 : s2)
                 .orElse(null)).getKey();
-        Month expected = FEBRUARY;
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(FEBRUARY, actual);
     }
 
     /**
